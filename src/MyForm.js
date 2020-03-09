@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
 import Icon from './icon.png'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router'
  
  
@@ -18,10 +18,6 @@ const styles = ()=> ({
         position:'absolute',
         top:'80%',
         left:'32%',
-        
-        
-        
-
   },
   password:{
     //float:'left'
