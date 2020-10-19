@@ -1,20 +1,15 @@
-
 import React from 'react';
-//import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-//import FormControlLabel from '@material-ui/core/FormControlLabel';
-//import Checkbox from '@material-ui/core/Checkbox';
-//import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-//import Box from '@material-ui/core/Box';
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {connect} from 'react-redux'
+import {actions} from 'C:/My folder/JS/Allapps/travel-app/src/store/actions.js';
 
-
+console.log(actions);
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -43,17 +38,17 @@ const useStyles = makeStyles(theme => ({
     borderWidth: "1px",
     borderColor: "#8B4513 !important",
   },
-label: {
-    '&$focused': {
-      color: '#8B4513'
-    },
-  },
-  }
+  floatingLabelFocusStyle: {
+    color: "#8B4513"
+},
+  
+}
 ));
 
-export default function SignUp() {
-  const classes = useStyles();
 
+const SignUp = (props) => {
+  const classes = useStyles();
+  const {firstName, lastName, email, password, dispatch} = props;
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -67,19 +62,22 @@ export default function SignUp() {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                InputProps={{
+                InputProps = {{
                     classes: {
                         notchedOutline: classes.notchedOutline
                 }
               }}
-                autoComplete="fname"
+              InputLabelProps={{
+                className: classes.floatingLabelFocusStyle,
+              }}
                 name="firstName"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
                 label="First Name"
-                autoFocus
+                value={firstName}
+                onChange={(e) => dispatch(actions.signup.changeFirstname(e.target.value))}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -89,13 +87,17 @@ export default function SignUp() {
                     notchedOutline: classes.notchedOutline
                         }
                     }}
+                InputLabelProps={{
+                      className: classes.floatingLabelFocusStyle,
+                }}
                 variant="outlined"
                 required
                 fullWidth
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                autoComplete="lname"
+                value={lastName}
+                onChange={(e) => dispatch(actions.signup.changeLastname(e.target.value))}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,13 +107,17 @@ export default function SignUp() {
                     notchedOutline: classes.notchedOutline
                     }
                      }}
+                InputLabelProps={{
+                    className: classes.floatingLabelFocusStyle,
+                }}
                 variant="outlined"
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
+                value={email}
+                onChange={(e) => dispatch(actions.signup.changeEmail(e.target.value))}
               />
             </Grid>
             <Grid item xs={12}>
@@ -121,6 +127,9 @@ export default function SignUp() {
                     notchedOutline: classes.notchedOutline
                         }
                          }}
+                InputLabelProps={{
+                    className: classes.floatingLabelFocusStyle,
+                }}
                 variant="outlined"
                 required
                 fullWidth
@@ -128,10 +137,10 @@ export default function SignUp() {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                value={password}
+                onChange={(e) => dispatch(actions.signup.changePassword(e.target.value))}
               />
             </Grid>
-           
           </Grid>
           <Button
             type="submit"
@@ -142,10 +151,27 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-         
         </form>
       </div>
-      
     </Container>
   );
 }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     firstName: state.signUpReducer.firstName,
+//     lastName: state.signUpReducer.lastName,
+//     email: state.signUpReducer.email,
+//     password: state.signUpReducer.password
+//   }
+// }
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    firstName: state.firstName,
+    lastName: state.lastName,
+    email: state.email,
+    password: state.password
+  }
+}
+export default connect(mapStateToProps)(SignUp);

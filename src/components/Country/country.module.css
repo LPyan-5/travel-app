@@ -1,0 +1,70 @@
+.mainDiv {
+    margin-top: 4%;
+    margin-left: 40%;
+    align-items: center
+}
+.h2 {
+    color: #A0522D
+}
+
+.clickMeButton {
+    width: 140px; 
+    height: 40px; 
+    background-color: #FFDAB9;
+    color: #A0522D;
+    margin-left: 7%;
+    border: 0.3px solid #FFDAB9;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.secondMainDiv { 
+    margin-left: 20%;
+    margin-top: 5.5%
+}
+
+.p {
+    font-size: 22px;
+    color: #A0522D
+}
+
+.first {
+    position: absolute; 
+    left: 55%;
+    top: 10%
+}
+.second {
+    position: absolute;
+    left: 25%; 
+    top: 10%
+}
+.third {
+    position: absolute;
+    left: 27%;
+    top: 35%
+}
+.fourth {
+    position: absolute;
+    left: 55%; 
+    top: 35%
+}
+
+.dataP {
+    font-size: 18px;
+    margin-left: 7%;
+    color: #A0522D
+}
+.getAnotherButton {
+    position: absolute;
+    width: 140px; 
+    height: 40px;
+    background-color: #FFDAB9; 
+    color: #A0522D;
+    left: 43%;
+    top: 50%;
+    border: 0.3px solid #FFDAB9;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+
